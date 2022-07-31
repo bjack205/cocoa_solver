@@ -23,6 +23,8 @@ if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
 
+option(COCOA_BUILD_TESTS "Build testing suite for COCOA" ON)
+
 #############################################
 # Dependencies
 #############################################
@@ -42,3 +44,9 @@ add_compile_options(-mavx2 -mfma)
 # Compile src
 add_subdirectory(src)
 
+#############################################
+# Testing
+#############################################
+if (${COCOA_BUILD_TESTS})
+  add_subdirectory(test)
+endif()
