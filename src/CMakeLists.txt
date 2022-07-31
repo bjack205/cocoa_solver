@@ -6,4 +6,5 @@ target_link_libraries(
   main
   PRIVATE
   qdldlstatic
+  slap::slap
 )

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21.0)
 list(APPEND CMAKE_MESSAGE_CONTEXT cocoa)
-project(RExQuad VERSION 0.1.0 LANGUAGES C CXX)
+project(cocoa VERSION 0.1.0 LANGUAGES C CXX)
 
 # Language Standard
 set(CMAKE_C_STANDARD 17)
@@ -27,6 +27,7 @@ endif()
 # Dependencies
 #############################################
 add_subdirectory(deps)
+add_subdirectory(deps/slap)
 AddFmtLib()
 AddGoogleTest()
 AddQdldl()

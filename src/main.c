@@ -5,7 +5,10 @@
 #include <stdio.h>
 
 #include <qdldl.h>
+#include <slap/slap.h>
 
 int main() {
+  Matrix m;
+  (void)m;
   printf("Hello from cocoa solver!\n");
 }
