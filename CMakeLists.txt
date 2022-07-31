@@ -24,6 +24,7 @@ if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 option(COCOA_BUILD_TESTS "Build testing suite for COCOA" ON)
+option(COCOA_CODE_COVERAGE "Compile cocoa with Code Coverage." OFF)
 
 #############################################
 # Dependencies
@@ -37,6 +38,12 @@ AddQdldl()
 #############################################
 # Build
 #############################################
+if(COCOA_CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+  message(STATUS "Compiling rsLQR with coverage info.")
+  add_compile_options(-O0 -g -fprofile-arcs -ftest-coverage)
+  add_link_options(-fprofile-arcs -ftest-coverage)
+endif()
+
 # Add compile options
 add_compile_options(-Wall -Wextra -pedantic -Werror -Wno-error=unknown-pragmas)
 add_compile_options(-mavx2 -mfma)
@@ -49,4 +56,23 @@ add_subdirectory(src)
 #############################################
 if (${COCOA_BUILD_TESTS})
   add_subdirectory(test)
+endif()
+
+
+##############################
+# Documentation
+##############################
+find_package(Doxygen)
+if (DOXYGEN_FOUND)
+  message(STATUS "Adding cocoa_docs target for building the documentation.")
+  set(DOXYGEN_IN ${PROJECT_SOURCE_DIR}/docs/Doxyfile.in)
+  set(DOXYGEN_OUT ${PROJECT_SOURCE_DIR}/docs/Doxyfile)
+  file(REMOVE ${DOXYGEN_OUT})
+  configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+
+  add_custom_target(cocoa_docs
+    COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+    COMMENT "Build documentation with Doxygen."
+    )
 endif()
