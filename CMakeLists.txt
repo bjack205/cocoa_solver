@@ -67,6 +67,7 @@ if (DOXYGEN_FOUND)
   message(STATUS "Adding cocoa_docs target for building the documentation.")
   set(DOXYGEN_IN ${PROJECT_SOURCE_DIR}/docs/Doxyfile.in)
   set(DOXYGEN_OUT ${PROJECT_SOURCE_DIR}/docs/Doxyfile)
+  file(REMOVE ${DOXYGEN_OUT})
   configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
 
   add_custom_target(cocoa_docs

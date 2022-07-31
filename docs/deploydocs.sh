@@ -14,6 +14,8 @@ git checkout gh-pages || exit 1
 echo "Copy"
 pwd
 ls
+ls build
+ls build/docs
 cp -r build/docs/html/* html || exit 1
 sleep 0.5
 echo "Add"
