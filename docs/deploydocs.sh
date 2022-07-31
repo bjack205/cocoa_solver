@@ -12,6 +12,8 @@ git fetch
 echo "Checkout"
 git checkout gh-pages || exit 1
 echo "Copy"
+pwd
+ls
 cp -r build/docs/html/* html || exit 1
 sleep 0.5
 echo "Add"
