@@ -7,9 +7,10 @@ set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # Modules
-list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/deps)
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 include(CMakePrintHelpers)
 include(FetchContent)
+include(CocoaUtils)
 
 #############################################
 # Options
@@ -76,3 +77,8 @@ if (DOXYGEN_FOUND)
     COMMENT "Build documentation with Doxygen."
     )
 endif()
+
+##############################
+# Install and packaging
+##############################
+#add_subdirectory(packaging)
