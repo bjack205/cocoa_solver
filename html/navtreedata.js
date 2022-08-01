@@ -25,13 +25,16 @@ var NAVTREE =
   [ "rsLQR", "index.html", [
     [ "COCOA: Overview", "index.html", [
       [ "COCOA: Conic Optimal Control with primal-dual Augmented Lagrangian", "index.html#autotoc_md0", null ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"cocoa_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
