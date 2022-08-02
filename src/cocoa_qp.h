@@ -19,7 +19,8 @@
  * @param n number of primal variables
  * @param m number of equality constraints
  * @param p number of inequality constraints
- * @param P quadratic cost. Can be either dense or diagonal, controlled by `is_quadratic_cost`.
+ * @param P quadratic cost. Can be either dense or diagonal, controlled by
+ * `is_quadratic_cost`.
  * @param q linear cost. Size `(n,)`.
  * @param A Linear equality constraint term. Size `(m,n)`.
  * @param b Constant equality constraint term. Size `(m,)`.
@@ -31,15 +32,15 @@
  * @param err Error code. Can be NULL.
  * @return Pointer to initialized solver, or NULL if `err` is nonzero.
  */
-cocoa_Solver *cocoa_NewDenseQPSolver(int n, int m, int p,
-                                     const cocoa_float *P, const cocoa_float *q,
-                                     const cocoa_float *A, const cocoa_float *b,
-                                     const cocoa_float *C, const cocoa_float *d,
-                                     bool is_quadratic_cost,
-                                     cocoa_ERRORCODE *err);
+cocoa_Solver *cocoa_NewDenseQPSolver(int n, int m, int p,                         //
+                                     const cocoa_float *P, const cocoa_float *q,  //
+                                     const cocoa_float *A, const cocoa_float *b,  //
+                                     const cocoa_float *C, const cocoa_float *d,  //
+                                     bool is_quadratic_cost, cocoa_ERRORCODE *err);
 
 cocoa_ERRORCODE cocoa_SetPrimals(const cocoa_Solver *solver, const cocoa_float *x);
-cocoa_ERRORCODE cocoa_SetDualsEquality(const cocoa_Solver *solver, const cocoa_float *lambda);
+cocoa_ERRORCODE cocoa_SetDualsEquality(const cocoa_Solver *solver,
+                                       const cocoa_float *lambda);
 cocoa_ERRORCODE cocoa_SetDualsInequality(const cocoa_Solver *solver, const cocoa_float *mu);
 
 cocoa_ERRORCODE cocoa_GetPrimals(const cocoa_Solver *solver, cocoa_float *x);
@@ -57,7 +58,8 @@ cocoa_ERRORCODE cocoa_GetDualsInequality(const cocoa_Solver *solver, cocoa_float
  * @param n number of primal variables
  * @param m size of each conic constraint. Size `(M,)`.
  * @param M total number of conic constraints
- * @param P quadratic cost. Can be either dense or diagonal, controlled by `is_quadratic_cost`.
+ * @param P quadratic cost. Can be either dense or diagonal, controlled by
+ * `is_quadratic_cost`.
  * @param p linear cost
  * @param is_quadratic_cost Sets whether the cost is quadratic or dense.
  *                          If true:  `P` should be the vector of diagonals, of size `(n,)`.
@@ -65,11 +67,11 @@ cocoa_ERRORCODE cocoa_GetDualsInequality(const cocoa_Solver *solver, cocoa_float
  * @param err error code. Can be NULL.
  * @return Pointer to initialized solver, or NULL if `err` is nonzero.
  */
-cocoa_Solver *cocoa_NewDenseConicSolver(int n, const int *m, int M,
+cocoa_Solver *cocoa_NewDenseConicSolver(int n, const int *m, int M,  //
                                         const cocoa_float *P, const cocoa_float *p,
-                                        bool is_quadratic_cost,
-                                        cocoa_ERRORCODE *err);
-// QUESTION: should we rename the constructors to `cocoa_NewCCQPSolver`, `cocoa_NewQPSolver`, and `cocoa_NewCOCPSolver`?
+                                        bool is_quadratic_cost, cocoa_ERRORCODE *err);
+// QUESTION: should we rename the constructors to `cocoa_NewCCQPSolver`,
+// `cocoa_NewQPSolver`, and `cocoa_NewCOCPSolver`?
 
 /**
  * @brief Set the data for the `i`th conic constraint of a CCQP
@@ -80,10 +82,9 @@ cocoa_Solver *cocoa_NewDenseConicSolver(int n, const int *m, int M,
  * @param i Constraint index. Valid range: `[0,M)`.
  * @return error code
  */
-cocoa_ERRORCODE cocoa_SetConicConstraint(cocoa_Solver *solver,
-                                         const cocoa_float *A, const cocoa_float *b,
-                                         cocoa_Cones cone,
-                                         int i);
+cocoa_ERRORCODE cocoa_SetConicConstraint(cocoa_Solver *solver, const cocoa_float *A,
+                                         const cocoa_float *b, cocoa_Cones cone, int i);
 
-cocoa_ERRORCODE cocoa_SetDualsConic(const cocoa_Solver *solver, const cocoa_float *lambda, int i);
+cocoa_ERRORCODE cocoa_SetDualsConic(const cocoa_Solver *solver, const cocoa_float *lambda,
+                                    int i);
 cocoa_ERRORCODE cocoa_GetDualsConic(const cocoa_Solver *solver, cocoa_float *lambda, int i);
