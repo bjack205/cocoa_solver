@@ -1,3 +1,14 @@
+set(CLANG_TIDY_FILE ${CMAKE_CURRENT_SOURCE_DIR}/.clang-tidy)
+if (COCOA_RUN_CLANG_TIDY AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
+  message(STATUS "Running clang-tidy on source directory.")
+  set(CMAKE_C_CLANG_TIDY
+    clang-tidy;
+    -export-fixes=tidy-fixes.yaml;
+    -config-file=${CLANG_TIDY_FILE}
+    )
+endif()
+cmake_print_variables(CLANG_TIDY_FILE)
+
 add_executable(
   main
   main.c

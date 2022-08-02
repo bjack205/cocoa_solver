@@ -4,7 +4,6 @@
 //
 
 #pragma once
-
 #include "cocoa.h"
 
 /**
@@ -34,31 +33,29 @@
  * @param err
  * @return
  */
-cocoa_Solver *cocoa_NewLTISolver(int num_states, int num_inputs, const int* p, int num_constraints, int num_horizon,
+cocoa_Solver *cocoa_NewLTISolver(int num_states, int num_inputs, const int *p,
+                                 int num_constraints, int num_horizon,
                                  const cocoa_float *Q, const cocoa_float *q,
                                  const cocoa_float *R, const cocoa_float *r,
-                                 const cocoa_float *A, const cocoa_float *B, const cocoa_float *f,
-                                 bool is_cost_diagonal,
-                                 cocoa_ERRORCODE* err);
+                                 const cocoa_float *A, const cocoa_float *B,
+                                 const cocoa_float *f,
+                                 bool is_cost_diagonal, cocoa_ERRORCODE *err);
 
-cocoa_ERRORCODE cocoa_SetTrackingCost(cocoa_Solver *solver,
-                                      const cocoa_float *Q,
-                                      const cocoa_float *R,
-                                      const cocoa_float *xref,
-                                      const cocoa_float *uref,
-                                      int k);
+cocoa_ERRORCODE cocoa_SetTrackingCost(cocoa_Solver *solver, const cocoa_float *Q,
+                                      const cocoa_float *R, const cocoa_float *xref,
+                                      const cocoa_float *uref, int k);
 
 /**
- * @brief Shifts the problem by one time step, dropping the data at the first time step and zero-initializing the last
- *        time step.
+ * @brief Shifts the problem by one time step, dropping the data at the first time step and
+ * zero-initializing the last time step.
  * @param solver An initialized problem (usually after a solve)
  * @return error code
  */
 cocoa_ERRORCODE cocoa_ShiftProblem(cocoa_Solver *solver);
 
 /**
- * @brief Shifts the problem by one time step, dropping the data at the first time step and setting the last time step
- *        equal to the data of the previous time step.
+ * @brief Shifts the problem by one time step, dropping the data at the first time step and
+ * setting the last time step equal to the data of the previous time step.
  *
  *
  * @param solver An initialized problem (usually after a solve)

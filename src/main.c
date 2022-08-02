@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 #include <qdldl.h>
-#include <slap/slap.h>
+#include <slap.h>
 
 int main() {
   Matrix m;

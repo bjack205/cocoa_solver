@@ -25,6 +25,7 @@ endif()
 
 option(COCOA_BUILD_TESTS "Build testing suite for COCOA" ON)
 option(COCOA_CODE_COVERAGE "Compile cocoa with Code Coverage." OFF)
+option(COCOA_RUN_CLANG_TIDY "Run clang-tidy on the cocoa source files." OFF)
 
 #############################################
 # Dependencies
@@ -75,4 +76,6 @@ if (DOXYGEN_FOUND)
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
     COMMENT "Build documentation with Doxygen."
     )
+else()
+  message(STATUS "Couldn't find Doxygen. Try installing using sudo apt-get install doxygen.")
 endif()
