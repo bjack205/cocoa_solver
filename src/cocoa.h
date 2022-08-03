@@ -170,8 +170,8 @@ typedef enum {
  * @param cone The type of cone
  * @return error code
  */
-cocoa_ERRORCODE cocoa_SetConstraint(cocoa_Solver *solver, const cocoa_float *G,
-                                    const cocoa_float *H, const cocoa_float *h, int i,
+cocoa_ERRORCODE cocoa_SetConstraint(cocoa_Solver *solver, const cocoa_float *E,
+                                    const cocoa_float *F, const cocoa_float *g, int i,
                                     int k, cocoa_Cones cone);
 
 /**
