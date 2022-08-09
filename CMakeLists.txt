@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21.0)
+cmake_minimum_required(VERSION 3.16.0)
 list(APPEND CMAKE_MESSAGE_CONTEXT cocoa)
 project(cocoa VERSION 0.1.0 LANGUAGES C CXX)
 
