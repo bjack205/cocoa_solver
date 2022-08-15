@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21.0)
+cmake_minimum_required(VERSION 3.16.0)
 list(APPEND CMAKE_MESSAGE_CONTEXT cocoa)
 project(cocoa VERSION 0.1.0 LANGUAGES C CXX)
 
@@ -25,6 +25,8 @@ endif()
 
 option(COCOA_BUILD_TESTS "Build testing suite for COCOA" ON)
 option(COCOA_CODE_COVERAGE "Compile cocoa with Code Coverage." OFF)
+option(COCOA_RUN_CLANG_TIDY "Run clang-tidy on the cocoa source files." OFF)
+option(COCOA_SINGLE_PRECISION "Use single-precision floats in cocoa." OFF)
 
 #############################################
 # Dependencies
@@ -75,4 +77,6 @@ if (DOXYGEN_FOUND)
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
     COMMENT "Build documentation with Doxygen."
     )
+else()
+  message(STATUS "Couldn't find Doxygen. Try installing using sudo apt-get install doxygen.")
 endif()

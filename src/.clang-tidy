@@ -1,0 +1,14 @@
+Checks:
+  '
+  bugprone*,
+  clang-analyzer*,
+  readability-*, -readability-identifier-length,
+  google-*,-google-readability-todo,
+  modernize-*,
+  cert-*,
+  llvm-*,-llvm-header-guard,
+  '
+
+FormatStyle: file
+
+HeaderFilterRegex: 'cocoa_solver/src/.+\.h|slap/.+\.h'
