@@ -6,6 +6,7 @@ function(add_cocoa_test testname)
     PRIVATE
     gtest_main
     fmt::fmt
+    cocoa
     )
   gtest_discover_tests(${testname}_test)
 endfunction()

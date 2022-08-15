@@ -6,7 +6,7 @@ if (COCOA_RUN_CLANG_TIDY AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
     -export-fixes=tidy-fixes.yaml;
     -config-file=${CLANG_TIDY_FILE}
     )
-endif()
+endif ()
 cmake_print_variables(CLANG_TIDY_FILE)
 
 add_executable(
@@ -32,3 +32,19 @@ target_link_libraries(
   qdldlstatic
   slap::slap
 )
+target_include_directories(
+  cocoa
+  INTERFACE
+  ${CMAKE_CURRENT_SOURCE_DIR}
+)
+cmake_print_variables(COCOA_SINGLE_PRECISION)
+if (COCOA_SINGLE_PRECISION)
+  message(STATUS "Using single precision floats.")
+  target_compile_definitions(
+    cocoa
+    PUBLIC
+    COCOA_SINGLE_PRECISION=1
+  )
+else()
+  message(STATUS "Using double precision floats.")
+endif ()
